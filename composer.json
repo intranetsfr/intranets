@@ -1,0 +1,13 @@
+{
+	"description": "Intranets Codeigniter App",
+	"name": "intranets/framework",
+	"type": "project",
+	"homepage": "https://intranets.fr",
+	"license": "MIT",
+	"require": {
+		"php": ">=5.4.8",
+		"twig/twig": "^2.0",
+		"twbs/bootstrap": "4.0.0",
+		"components/font-awesome": "^5.9"
+	}
+}
