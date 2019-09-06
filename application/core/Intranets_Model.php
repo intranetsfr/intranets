@@ -28,13 +28,20 @@ class Intranets_Model extends CI_Model
             $functions_list[$func] = ($args);
     }
   }
-  public function header_get($path=""){
+  public function get($path=""){
     if(!empty($path)){
       $this->db->where("pages.pages_path", $path);
     }
+    $this->db->group_start();
     $this->db->where("pages.pages_path", "*");
+    $_path = '';
+    foreach ($this->uri->rsegments as $path) {
+      $_path .= $path.'/';
+      $this->db->or_where("pages.pages_path", $_path);
+    }
+    $this->db->group_end();
     $result = $this->db->get("pages");
-
+//e($this->db->last_query());
     return $this->afficher_menu(0, 0, $result->result("array"));
     //return $result->result("array");
   }

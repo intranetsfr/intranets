@@ -14,13 +14,24 @@ class Intranets_Controller extends CI_Controller
     //$data['_id'] = strreplace('/', '_', $data['view']);
     $data['_id'] = str_replace("/", "_", $data['view']);
 
-    $data['header'] = $this->Intranets_Model->header_get();
+    $this->db->group_start();
+    $this->db->where("pages.pages_process", "link_tag");
+    $this->db->or_where("pages.pages_process", "meta");
+    $this->db->group_end();
+    $data['header'] = $this->Intranets_Model->get();
+
     $this->load->view("templates/header", $data);
     if(isset($data['admin_editor']) && $data['admin_editor'] == true){
       $this->load->view("admin/plugins/editor", $data);
     }
     $this->load->view($data['view'], $data);
-    $data['footer'] = $this->Intranets_Model->footer_get();
+
+    $this->db->where("pages.pages_process", "script_tag");
+
+        $this->db->group_start();
+        $this->db->where("pages.pages_process", "script_tag");
+        $this->db->group_end();
+    $data['footer'] = $this->Intranets_Model->get();
     $this->load->view("templates/footer", $data);
   }
 }

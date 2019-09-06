@@ -9,10 +9,20 @@ class Admin extends Intranets_Controller
   {
     parent::__construct();
   }
-  public function index(){
+  public function index($pages_index=""){
   			$data['title'] = "Admin";
-  			$data['view'] = "admin/users/login";
-  			$data['admin_editor'] = false;
+        $data['admin'] = true;
+        if($data['admin']){
+          $this->db->group_by("pages_path");
+          $pages = $this->db->get("pages");
+          $data['pages'] = $pages->result("array");
+          if(!empty($pages_index)){
+            $data['page'] = $data['pages'][$pages_index];
+          }
+          $data['view'] = "admin/users/dashboard";
+        }else{
+          $data['view'] = "admin/users/login";
+        }
   			$this->view($data);
   }
 }
