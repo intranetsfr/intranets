@@ -52,4 +52,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'pages/index';
 $route['404_override'] = 'pages/not_found';
 $route['(:any).html'] = 'pages/index/$1';
+$route['users/login'] = 'users/login';
+$route['users/subscribe'] = 'users/subscribe';
+$route['users/forgetpassword'] = 'users/forgetpassword';
+$route['users/redefinedpassword'] = 'users/redefinedpassword';
 $route['translate_uri_dashes'] = FALSE;
