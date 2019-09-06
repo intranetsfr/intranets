@@ -33,5 +33,15 @@ class Users extends Intranets_Controller
   		$data['view'] = "pages/users/redefinedpassword";
   		$this->view($data);
   }
+  public function purchase(){
+  		$data['title'] = "Purchase";
+  		$data['view'] = "pages/users/purchase";
+  		$this->view($data);
+  }
+  public function paiement(){
+  		$data['title'] = "Paiement";
+  		$data['view'] = "pages/users/paiement";
+  		$this->view($data);
+  }
 }
  ?>

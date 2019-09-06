@@ -20,3 +20,4 @@
     ?>
 </head>
 <body class="<?= $_id?>">
+  <?php $this->load->view("pages/templates/header");
