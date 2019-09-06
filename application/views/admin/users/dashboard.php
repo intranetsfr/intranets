@@ -22,12 +22,12 @@
             </a>
           </li>
           <?php
-          foreach ($pages as $k=>$page) {
+          foreach ($pages as $k=>$p) {
             ?>
           <li class="nav-item">
             <a class="nav-link" href="<?= site_url('admin/'.$k)?>">
               <span data-feather="file"></span>
-              <?= $page['pages_path']?>
+              <?= $p['pages_path']?>
             </a>
           </li>
           <?php
@@ -50,39 +50,58 @@
           </button>
         </div>
       </div>
-      <h2>Section title</h2>
-      <?php
-      if(isset($pages_index)){
-       ?>
-      <div class="table-responsive">
-        <table class="table table-striped table-sm">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Header</th>
-              <th>Header</th>
-              <th>Header</th>
-              <th>Header</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1,001</td>
-              <td>Lorem</td>
-              <td>ipsum</td>
-              <td>dolor</td>
-              <td>sit</td>
-            </tr>
-            <tr>
-              <td>1,002</td>
-              <td>amet</td>
-              <td>consectetur</td>
-              <td>adipiscing</td>
-              <td>elit</td>
-            </tr>
-          </tbody>
-        </table>
+      <h2>Inside : <?= $page_info['pages_path']?></h2>
+      <div class="card" style="width: 100%;">
+        <form method="post">
+          <div class="card-body">
+            <h5 class="card-title">Add a new [script]</h5>
+            <div class="card-text">
+              <div class="form-group">
+                <label>Script name</label>
+                <select name="script_name" class="form-control" id="script_name">
+                  <option value="" selected disabled>Choose a script</option>
+                  <?php foreach ($functions as $fname=>$fpropreties) {
+                    ?>
+                    <option><?= $fname?></option>
+                    <?php
+                  } ?>
+                </select>
+              </div>
+            </div>
+            <button class="btn btn-success"><i class="fa fa-plus"></i> Add</button>
+          </div>
+        </form>
       </div>
+      <hr />
+      <?php
+      if(isset($page)){
+        //$array = json_decode($page['pages_value'], true);
+        //e($array);
+        foreach ($page as $p) {
+          ?>
+          <div>
+          <h4>[<?= $p['pages_process']?>]</h2>
+
+         <div class="table-responsive">
+           <table class="table table-striped table-sm">
+             <tbody>
+                 <?php
+                 $propreties = json_decode($p['pages_value'], true);
+                 foreach ($propreties as $key => $value) {
+                   ?>
+                   <tr>
+                   <th><?= $key?> (<?= gettype($value)?>)</th>
+                     <td><?= $value?></td>
+                   </tr>
+                   <?php
+                 } ?>
+             </tbody>
+           </table>
+         </div>
+          </div>
+          <?php
+        }
+       ?>
     <?php } ?>
     </main>
   </div>

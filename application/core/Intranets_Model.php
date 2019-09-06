@@ -5,7 +5,7 @@
  */
 class Intranets_Model extends CI_Model
 {
-
+  public $functions = array();
   function __construct()
   {
 
@@ -27,6 +27,7 @@ class Intranets_Model extends CI_Model
             }
             $functions_list[$func] = ($args);
     }
+    $this->functions = $functions_list;
   }
   public function get($path=""){
     if(!empty($path)){
