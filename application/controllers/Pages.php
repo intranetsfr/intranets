@@ -8,6 +8,9 @@ class Pages extends Intranets_Controller {
 	public function index($uri="/"){
 		$data['title'] = "Intranets";
 		$data['view'] = "pages/home";
+		$data['csss'] = array(
+			"demo.css"
+		);
 		$this->view($data);
 	}
 	public function not_found(){

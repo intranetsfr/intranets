@@ -20,7 +20,7 @@ class Intranets_Controller extends CI_Controller
     //$data['_id'] = strreplace('/', '_', $data['view']);
     $data['_id'] = str_replace("/", "_", $data['view']);
     if(isset($data['csss'])){
-      array_merge($this->csss, $data['csss']);
+      array_merge($data['csss'], $this->csss);
     }
     $this->load->view("templates/header", $data);
     $this->load->view($data['view'], $data);

@@ -14,7 +14,7 @@
     }
     if(isset($csss)){
       foreach($csss as $css){
-        link_tag($css);
+        echo link_tag($css);
       }
     }
     ?>
