@@ -8,8 +8,4 @@ function e($data=array(), $exit=false){
   }
   return true;
 }
-
-function to_int($param) : int {
-    return (int) $param;
-}
  ?>
