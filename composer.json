@@ -10,6 +10,7 @@
 		"components/font-awesome": "^5.9",
 		"components/jquery": "^3.3",
 		"facebook/graph-sdk": "^5.7",
-		"select2/select2": "^4.0"
+		"select2/select2": "^4.0",
+		"mangopay/php-sdk-v2": "^2.12"
 	}
 }
