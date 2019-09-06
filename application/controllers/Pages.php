@@ -8,15 +8,13 @@ class Pages extends Intranets_Controller {
 	public function index(){
 		$data['title'] = "Intranets";
 		$data['view'] = "pages/home";
-		$data['admin_editor'] = true;
+		$data['admin_editor'] = false;
 		$this->view($data);
 	}
-	public function page($path="")
-	{
-
-		$this->load->view('welcome_message');
-	}
 	public function not_found(){
-		$this->page("not_found");
+			$data['title'] = "Introuvable";
+			$data['view'] = "pages/not_found";
+			$data['admin_editor'] = false;
+			$this->view($data);
 	}
 }
