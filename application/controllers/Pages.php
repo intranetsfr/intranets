@@ -5,10 +5,9 @@ class Pages extends Intranets_Controller {
 	public function __construct(){
 		parent::__construct();
 	}
-	public function index(){
+	public function index($uri="/"){
 		$data['title'] = "Intranets";
 		$data['view'] = "pages/home";
-		$data['admin_editor'] = false;
 		$this->view($data);
 	}
 	public function not_found(){
