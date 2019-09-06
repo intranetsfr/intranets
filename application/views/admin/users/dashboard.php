@@ -57,12 +57,23 @@
             <h5 class="card-title">Add a new [script]</h5>
             <div class="card-text">
               <div class="form-group">
+                <label>Script Path</label>
+                <div class="row">
+                <div class="col-auto">
+                  <?= site_url()?>
+                </div>
+                <div class="col-8">
+                  <input name="pages_path" placeholder="E.g : test.html" class="form-control" id="pages_path" value="<?= $page_info['pages_path']?>">
+                </div>
+                </div>
+              </div>
+              <div class="form-group">
                 <label>Script name</label>
                 <select name="script_name" class="form-control" id="script_name">
                   <option value="" selected disabled>Choose a script</option>
                   <?php foreach ($functions as $fname=>$fpropreties) {
                     ?>
-                    <option><?= $fname?></option>
+                    <option value="<?= $fname?>"><?= $fname?></option>
                     <?php
                   } ?>
                 </select>
@@ -75,26 +86,30 @@
       <hr />
       <?php
       if(isset($page)){
-        //$array = json_decode($page['pages_value'], true);
-        //e($array);
         foreach ($page as $p) {
           ?>
           <div>
-          <h4>[<?= $p['pages_process']?>]</h2>
-
+          <h4>[<?= $p['pages_process']?>] | <a href="javascript:confirm_delete(<?= $p['pages_id']?>)" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a></h2>
          <div class="table-responsive">
-           <table class="table table-striped table-sm">
+           <table class="table table-striped table-bordered table-sm">
              <tbody>
+               <form action="" method="post">
                  <?php
                  $propreties = json_decode($p['pages_value'], true);
                  foreach ($propreties as $key => $value) {
                    ?>
                    <tr>
-                   <th><?= $key?> (<?= gettype($value)?>)</th>
-                     <td><?= $value?></td>
+                     <th><?= $key?> (<?= gettype($value)?>)</th>
+                     <td>
+                       <?= $value?>
+                       <?= $this->load->view("admin/plugins/".gettype($value), array("key"=>$key, "value"=>$value, "pages"=>$pages, "files"=>$files), true)?>
+                     </td>
                    </tr>
                    <?php
                  } ?>
+                 <input type="hidden" name="pages_id" value="<?= $p['pages_id']?>"/>
+                 <button class="btn btn-success"><i class="fa fa-play"></i> Update</button>
+               </form>
              </tbody>
            </table>
          </div>
@@ -106,3 +121,10 @@
     </main>
   </div>
 </div>
+<script type="text/javascript">
+function confirm_delete(pages_id){
+  if(confirm("Remove it ? Sur ?")){
+    window.location.href = base_url+'admin/pages/delete/'+pages_id
+  }
+}
+</script>

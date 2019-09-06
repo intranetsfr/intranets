@@ -22,6 +22,13 @@ class Intranets_Model extends CI_Model
                           //  $tmparg = '[' . $tmparg . '$' . $param->getName() . ' = ' . $param->getDefaultValue() . ']';
                           $name = $param->getName();
                           $args[$name] = $param->getDefaultValue();
+/*
+                          echo gettype($param->getDefaultValue());
+                          echo "\n";
+                          echo $args[$name];
+                          echo "\n";
+                          echo "\n";
+  */                        
                     }
 
             }
