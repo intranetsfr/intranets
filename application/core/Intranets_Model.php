@@ -49,7 +49,7 @@ class Intranets_Model extends CI_Model
             $html .= "-";
           }
 
-          $html .= " " . $noeud['pages_process'] . "<br>";
+          //$html .= " " . $noeud['pages_process'] . "<br>";
           $values = json_decode($noeud['pages_value'], true);
           $i = 0;
           $exec = 'return  '.$noeud['pages_process'].'(';

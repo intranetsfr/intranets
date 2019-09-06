@@ -10,7 +10,6 @@ class Admin extends Intranets_Controller
     parent::__construct();
   }
   public function index(){
-
   			$data['title'] = "Admin";
   			$data['view'] = "admin/users/login";
   			$data['admin_editor'] = false;

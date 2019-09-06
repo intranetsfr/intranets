@@ -6,6 +6,5 @@ function e($data=array(), $exit=false){
   if($exit){
     exit();
   }
-  return true;
 }
  ?>

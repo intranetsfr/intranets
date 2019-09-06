@@ -9,11 +9,7 @@
         var base_url = '<?= site_url()?>';
     </script>
     <?php
-    if(isset($csss)){
-        foreach ($csss as $css) {
-          link_tag($css);
-        }
-    }
+    echo ($header);
     if(isset($title)){
       echo '<title>'.$title.'</title>';
     }
