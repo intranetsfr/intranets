@@ -9,6 +9,7 @@ class Pages extends Intranets_Controller {
 		$data['title'] = "Intranets";
 		$data['view'] = "pages/home";
 		$data['csss'] = array(
+		    
 		);
 		$this->view($data);
 	}

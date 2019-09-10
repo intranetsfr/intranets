@@ -1,16 +1,26 @@
 {
-	"description": "Intranets Codeigniter App",
-	"name": "intranets/framework",
-	"type": "project",
-	"homepage": "https://intranets.fr",
-	"license": "MIT",
-	"require": {
-		"php": ">=5.4.8",
-		"twbs/bootstrap": "4.0.0",
-		"components/font-awesome": "^5.9",
-		"components/jquery": "^3.3",
-		"facebook/graph-sdk": "^5.7",
-		"select2/select2": "^4.0",
-		"mangopay/php-sdk-v2": "^2.12"
-	}
+	"description" : "Intranets Codeigniter App",
+	"name" : "intranets/framework",
+	"type" : "project",
+	"homepage" : "https://intranets.fr",
+	"license" : "MIT",
+	"require" : {
+		"php" : ">=5.4.8",
+		"twbs/bootstrap" : "4.0.0",
+		"components/font-awesome" : "^5.9",
+		"components/jquery" : "^3.3",
+		"facebook/graph-sdk" : "^5.7",
+		"select2/select2" : "^4.0",
+		"mangopay/php-sdk-v2" : "^2.12"
+	},
+	"support" : {
+		"email" : "rotyjeremy@gmail.com"
+	},
+	"authors" : [{
+			"name" : "ROTY Jeremy",
+			"email" : "rotyjeremy@gmail.com",
+			"homepage" : "https://intranets.fr",
+			"role" : "Admin"
+		}
+	]
 }

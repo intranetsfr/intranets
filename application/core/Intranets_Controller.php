@@ -20,23 +20,35 @@ class Intranets_Controller extends CI_Controller
         "vendor/mdl/material.min.js"
     );
   }
-  public function view($data){
+  public function view($data, $ajax=false){
     //$data['_id'] = strreplace('/', '_', $data['view']);
-    $data['_id'] = str_replace("/", "_", $data['view']);
-
-    $data['csss'] = $this->csss;
-    if(isset($data['csss'])){
-      array_push($this->csss, $data['csss']);
-    }
-    $this->load->view("templates/header", $data);
-    $this->load->view($data['view'], $data);
-    $data['jss'] = $this->jss;
-
-    if(isset($data['jss'])){
-      array_push($data['jss'],$this->jss);
-    }
-
-    $this->load->view("templates/footer", $data);
+      if(isset($data['view'])){
+        $data['_id'] = str_replace("/", "_", $data['view']);
+    
+        $data['csss'] = $this->csss;
+        if(isset($data['csss'])){
+          array_push($this->csss, $data['csss']);
+        }
+        if($ajax == false){
+            $this->load->view("templates/header", $data);        
+        }
+        $this->load->view($data['view'], $data);
+        $data['jss'] = $this->jss;
+    
+        if(isset($data['jss'])){
+          array_push($data['jss'],$this->jss);
+        }
+        
+        if($ajax == false){
+            $this->load->view("templates/footer", $data);            
+        }
+      }else{
+          $this->JSON($data);
+      }
+  }
+  private function JSON($data){
+      header('Content-Type: application/json');
+      echo json_encode( $data );
   }
 }
 ?>
