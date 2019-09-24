@@ -56,4 +56,6 @@ $route['users/subscribe'] = 'users/subscribe';
 $route['users/forgetpassword'] = 'users/forgetpassword';
 $route['users/redefinedpassword'] = 'users/redefinedpassword';
 $route['admin'] = 'admin/index';
+$route['(:any).html'] = 'pages/index';
+$route['admin/(:any).view'] = 'admin/index/$1';
 $route['translate_uri_dashes'] = FALSE;

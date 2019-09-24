@@ -14,7 +14,8 @@ class Intranets_Controller extends CI_Controller
         "vendor/mdl/material.min.css",
         "vendor/components/font-awesome/css/all.css",
         "https://getmdl.io/templates/portfolio/styles.css",
-        "vendor/twbs/bootstrap/dist/css/bootstrap-grid.min.css"
+        "vendor/bootstrap-grid/css/bootstrap.css",
+        "default.css?time=".time()
     );
     $this->jss = array(
         "vendor/mdl/material.min.js"
