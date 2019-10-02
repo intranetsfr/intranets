@@ -7,21 +7,24 @@ class Intranets_Controller extends CI_Controller
 {
 	public $csss;
 	public $jss;
+	public $main;
 
 	function __construct()
 	{
 		parent::__construct();
-		$this->csss = array(
+
+		$this->jss = array_merge(array(
+			"node_modules/jquery/dist/jquery.min.js",
+			"node_modules/material-design-lite/material.min.js"
+		), (empty($this->jss) ? array() : $this->jss));
+
+		$this->csss = array_merge(array(
 			"https://fonts.googleapis.com/icon?family=Material+Icons",
 			"node_modules/material-design-lite/dist/material.min.css",
 			"vendor/components/font-awesome/css/all.css",
 			"https://getmdl.io/templates/portfolio/styles.css",
-			"node_modules/bootstrap-grid/css/bootstrap.css",
-			"default.css?time=" . time()
-		);
-		$this->jss = array(
-			"vendor/mdl/material.min.js"
-		);
+			"node_modules/bootstrap-grid/css/bootstrap.css"
+		), (empty($this->csss) ? array() : $this->csss));
 	}
 
 	public function view($data, $ajax = false)
@@ -31,20 +34,26 @@ class Intranets_Controller extends CI_Controller
 			$data['_id'] = str_replace("/", "_", $data['view']);
 
 			$data['csss'] = $this->csss;
-			if (isset($data['csss'])) {
-				array_push($this->csss, $data['csss']);
-			}
-			if ($ajax == false) {
+			if ($ajax !== true) {
 				$this->load->view("templates/header", $data);
+				if ($ajax !== 'iframe') {
+					if (empty($this->main)) {
+						$data['main'] = array(
+							"Home" => ""
+						);
+					} else {
+						$data['main'] = $this->main;
+					}
+					$this->load->view("pages/templates/header");
+				}
 			}
 			$this->load->view($data['view'], $data);
-			$data['jss'] = $this->jss;
+			if ($ajax !== true) {
+				$data['jss'] = $this->jss;
 
-			if (isset($data['jss'])) {
-				array_push($data['jss'], $this->jss);
-			}
-
-			if ($ajax == false) {
+				if ($ajax !== 'iframe') {
+					$this->load->view("pages/templates/footer");
+				}
 				$this->load->view("templates/footer", $data);
 			}
 		} else {

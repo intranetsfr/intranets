@@ -17,6 +17,7 @@
   "license": "ISC",
   "dependencies": {
     "bootstrap-grid": "git+https://github.com/intranetsfr/bootstrap-grid.git",
+    "jstree": "git+https://github.com/vakata/jstree.git",
     "material-design-lite": "^1.3.0"
   }
 }
