@@ -10,9 +10,7 @@ class Admin extends Intranets_Controller
 			"assets/css/style.css?time=" . time()
 		);
 		$this->main = array(
-			"Tables" => "admin",
-			"Builder" => "admin/intranets.builder",
-			"scripts" => "admin/scripts"
+			"Admin" => "admin"
 		);
 
 		parent::__construct();
@@ -52,19 +50,23 @@ class Admin extends Intranets_Controller
 
 	public function builder($is_main = "")
 	{
+
 		array_push($this->jss, array(
-			"node_modules/jstree/dist/jstree.min.js"
+
 		));
-		array_push($this->csss, array(
-			"href"=>"node_modules/jstree/dist/themes/default/style.min.css"
-		));
+		$this->csss = array(
+
+		);
 		if (empty($is_main)) {
 			$data['title'] = "ok";
 			$data['view'] = "admin/builder/index";
 			$this->view($data, true);
-		} else {
+		} elseif($is_main == 'main'){
 			$data['view'] = "admin/builder/main";
 			$this->view($data, 'iframe');
+		}else{
+
+
 		}
 	}
 }

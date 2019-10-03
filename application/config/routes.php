@@ -56,8 +56,7 @@ $route['users/subscribe'] = 'users/subscribe';
 $route['users/forgetpassword'] = 'users/forgetpassword';
 $route['users/redefinedpassword'] = 'users/redefinedpassword';
 $route['admin'] = 'admin/index';
-$route['admin/intranets.builder'] = 'admin/builder';
-$route['admin/intranets.builder/(:any)'] = 'admin/builder/$1';
+
 $route['(:any).html'] = 'pages/index';
 $route['admin/(:any).data'] = 'admin/data/$1';
 $route['admin/(:any).schema'] = 'admin/schema/$1';

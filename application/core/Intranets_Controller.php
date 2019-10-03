@@ -14,7 +14,7 @@ class Intranets_Controller extends CI_Controller
 		parent::__construct();
 
 		$this->jss = array_merge(array(
-			"node_modules/jquery/dist/jquery.min.js",
+			"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js",
 			"node_modules/material-design-lite/material.min.js"
 		), (empty($this->jss) ? array() : $this->jss));
 
@@ -44,7 +44,7 @@ class Intranets_Controller extends CI_Controller
 					} else {
 						$data['main'] = $this->main;
 					}
-					$this->load->view("pages/templates/header");
+					$this->load->view("pages/templates/header", $data);
 				}
 			}
 			$this->load->view($data['view'], $data);

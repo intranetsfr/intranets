@@ -1,9 +1,12 @@
 <div class="container-fluid">
+	<br />
 	<a class="mdl-button" href="<?= site_url("admin")?>">&laquo;</a>
-	<a class="mdl-button" href="<?= site_url("admin/".$table.'.schema')?>">
-		<i class="fa fa-edit"></i>
-		modifier le schema
+	<a class="mdl-button mdl-button--raised" href="<?= site_url("admin/".$table.'.form')?>">
+		<i class="fa fa-plus"></i>&nbsp;
+		ajouter une entrée
 	</a>
+	<br />
+	<br />
 	<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" width="100%">
 		<thead>
 		<tr>
