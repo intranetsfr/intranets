@@ -20,16 +20,22 @@ class Intranets_Controller extends CI_Controller
 
 		$this->csss = array_merge(array(
 			"https://fonts.googleapis.com/icon?family=Material+Icons",
-			"node_modules/material-design-lite/dist/material.min.css",
+			"node_modules/materi<al-design-lite/dist/material.min.css",
 			"vendor/components/font-awesome/css/all.css",
 			"https://getmdl.io/templates/portfolio/styles.css",
 			"node_modules/bootstrap-grid/css/bootstrap.css"
 		), (empty($this->csss) ? array() : $this->csss));
+
+		header('Access-Control-Allow-Origin: *');
+		header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
+		header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, X-Requested-With");
+
 	}
 
 	public function view($data, $ajax = false)
 	{
 		//$data['_id'] = strreplace('/', '_', $data['view']);
+
 		if (isset($data['view'])) {
 			$data['_id'] = str_replace("/", "_", $data['view']);
 
